@@ -14,10 +14,13 @@ public class PublishMsg {
     @Autowired
     private SimpMessagingTemplate simpMessagingTemplate;
 
+    /**
+     * This method will keeps on publish message to the socket channel
+     */
     @Scheduled(fixedRate = 5000)
     public void sendMessage() {
         final String time = new SimpleDateFormat("HH:mm").format(new Date());
-        simpMessagingTemplate.convertAndSend("/aios/publish",
+        simpMessagingTemplate.convertAndSend("/ide/message",
                 "Testing - Current date and time : " + new Date());
     }
 }

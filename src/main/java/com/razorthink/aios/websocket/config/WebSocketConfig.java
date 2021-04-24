@@ -12,15 +12,12 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(final MessageBrokerRegistry config) {
-        config.enableSimpleBroker("/aios");
-        config.setApplicationDestinationPrefixes("/app");
+        config.enableSimpleBroker("/ide");
     }
 
     @Override
     public void registerStompEndpoints(final StompEndpointRegistry registry) {
-        registry.addEndpoint("/chat");
-        registry.addEndpoint("/chat").setAllowedOrigins("*").withSockJS();
-
+        registry.addEndpoint("/aios").setAllowedOrigins("*").withSockJS();
     }
 
 }
